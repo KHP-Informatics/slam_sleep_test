@@ -19,10 +19,9 @@
 $( document ).ready(function() {
 //put yer stuff here
 
-/* <!-- Make sure GPS information is captured every x mins, in order to integrate with accelerometer data from 1) fitbit 2) on-phone accelerometer? or other activity measuring device  
-the logic here is you then don't need to specify when you are asleep as these GPS coordinates will be static when asleep and accelerometer will measure restlessness --> */
+/* AF: <!-- Make sure GPS information is captured every x mins, in order to integrate with accelerometer data from 1) fitbit 2) on-phone accelerometer or other activity measuring device, in order to produce a better measure of sleep and more importantly the user does not need to indicate when they are going to sleep / when the wake. The logic is the GPS coordinates will be static when asleep and accelerometer will measure restlessness. There are only a few other false positive scenarios where i) both devices have been put down, ii) charging accelerometer, iii)  --> */
 
-//<!-- pseudocode for location + fitbit sleep measure -->
+//<!-- AF: pseudocode for location + fitbit sleep measure -->
 if (PurpleRobot.probesState())  //check if Location Probe is enabled, alert to enable in PR?
 {
     alert("Check Probes are enabled in Purple Robot App. \n check: Purple Robot > Probe Configuration > Enable Probes");
@@ -39,13 +38,17 @@ catch (err)
 
 try
 {
-    obj_conf = { 'name' : 'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'SAMPLING_RATE':'5' };
-    PurpleRobot.updateProbe(obj_conf) // set the required option: "Sampling Rate" = 5 min, must have at least sample rate 5 mins
+    conf_obj = { 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true };
+    PurpleRobot.updateProbe(conf_obj); // set the required option: "Sampling Rate" = 5 min, must have at least sample rate 5 mins
 }
 catch (err)
 {
     //do something or throw
 }
+
+// AF: maybe setup some optional conf which specifys the set of probes and configures them at recommended values -- otherwise somewhat labourious for the user to do.
+
+// AF: to help with battery management, maybe have broad category of sample rates [e.g. low, med, high] (lowest=minimum sample rates where the data is useful), warn user if below this.
 
 $(".jumbotron").html("<h3>SLAM Sleep</h3>");
 
