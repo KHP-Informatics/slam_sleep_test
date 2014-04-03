@@ -21,8 +21,10 @@ $( document ).ready(function() {
 
 /* AF: <!-- Make sure GPS information is captured every x mins, in order to integrate with accelerometer data from 1) fitbit 2) on-phone accelerometer or other activity measuring device, in order to produce a better measure of sleep and more importantly the user does not need to indicate when they are going to sleep / when the wake. The logic is the GPS coordinates will be static when asleep and accelerometer will measure restlessness. There are only a few other false positive scenarios where i) both devices have been put down, ii) charging accelerometer, iii)  --> */
 
+alert("ok doing something ")
+
 //<!-- AF: pseudocode for location + fitbit sleep measure -->
-if (PurpleRobot.probesState())  //check if Location Probe is enabled, alert to enable in PR?
+if (PurpleRobot.probesState() != true)  //check if Location Probe is enabled, alert to enable in PR?
 {
     alert("Check Probes are enabled in Purple Robot App. \n check: Purple Robot > Probe Configuration > Enable Probes");
 }
@@ -50,7 +52,7 @@ catch (err)
 
 // AF: to help with battery management, maybe have broad category of sample rates [e.g. low, med, high] (lowest=minimum sample rates where the data is useful), warn user if below this.
 
-$(".jumbotron").html("<h3>SLAM Sleep</h3>");
+$(".jumbotron").html("<h3>SLAM Sleep v1.01</h3>");
 
 });
 
@@ -74,10 +76,12 @@ $(".main-form").on("submit", function(ev){
 	<div class="jumbotron"></div>
 
 	<div class="container">
+                <!-- feedback simple sleep data, perhaps in first instance as a table? or graphic? -->
+                <div class="" >
+                    <img src="http://radiocarla.com/wp-content/uploads/2013/09/FitBit_Flex-Sleep2.jpg" alt="Sleep Dummy Image (Activity + GPS)" />
+                </div>
+
 		<form role="form" id="main-form">  
-
-                        <!-- feedback simple sleep data, perhaps in first instance as a table? or graphic? -->
-
                         <div class="gps-group">
                         
                         <div class="form-group">
