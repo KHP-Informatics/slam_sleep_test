@@ -26,11 +26,11 @@ alert("just a test, ok doing something now");
 //<!-- AF: pseudocode for location + fitbit sleep measure -->
 try
 {
-    probesOn = PurpleRobot.probesState();
+    probesOn = PurpleRobotClient.probesState();
 }
 catch (err)
 {
-    alert("1. PurpleRobot.probesState error" + err);
+    alert("1. PurpleRobotClient.probesState error" + err);
 }
 
 if (probesOn == true)  //check if Probes are enabled, alert to enable in PR?
@@ -41,23 +41,23 @@ if (probesOn == true)  //check if Probes are enabled, alert to enable in PR?
 
 try
 {
-    PurpleRobot.enableProbe('edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe'); //enabble Location Probe if not enabled, or direct user to enable
+    PurpleRobotClient.enableProbe('edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe'); //enabble Location Probe if not enabled, or direct user to enable
 }
 catch (err)
 {
     //do something or throw
-    alert("3. PurpleRobot.enableProbe error" + err);
+    alert("3. PurpleRobotClient.enableProbe error" + err);
 }
 
 try
 {
     conf_obj = { 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true };
-    PurpleRobot.updateProbe(conf_obj); // set the required option: "Sampling Rate" = 5 min, must have at least sample rate 5 mins
+    PurpleRobotClient.updateProbe(conf_obj); // set the required option: "Sampling Rate" = 5 min, must have at least sample rate 5 mins
 }
 catch (err)
 {
     //do something or throw
-    alert("4. PurpleRobot.updateProbe error" + err);
+    alert("4. PurpleRobotClient.updateProbe error" + err);
 }
 
 // AF: maybe setup some optional conf which specifys the set of probes and configures them at recommended values -- otherwise somewhat labourious for the user to do.
@@ -73,11 +73,11 @@ $(".main-form").on("submit", function(ev){
 	ev.preventDefault();
         try
         {
-            PurpleRobotClient.emitReading("bed_time",$("#bed_time").val());
+            PurpleRobotClient.lient.emitReading("bed_time",$("#bed_time").val());
             PurpleRobotClient.emitReading("wake_time",$("#wake_time").val());
             PurpleRobotClient.emitReading("feeling_good_bad",$("#feeling_good_bad").val());
             //conf_obj = { 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true };
-            //PurpleRobot.updateProbe(conf_obj); // set the required option: "Sampling Rate" = 5 min, must have at least sample rate 5 mins
+            //PurpleRobotClient.updateProbe(conf_obj); // set the required option: "Sampling Rate" = 5 min, must have at least sample rate 5 mins
         }
         catch (err)
         {
