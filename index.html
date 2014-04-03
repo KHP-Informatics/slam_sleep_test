@@ -21,7 +21,7 @@ $( document ).ready(function() {
 
 /* AF: <!-- Make sure GPS information is captured every x mins, in order to integrate with accelerometer data from 1) fitbit 2) on-phone accelerometer or other activity measuring device, in order to produce a better measure of sleep and more importantly the user does not need to indicate when they are going to sleep / when the wake. The logic is the GPS coordinates will be static when asleep and accelerometer will measure restlessness. There are only a few other false positive scenarios where i) both devices have been put down, ii) charging accelerometer, iii)  --> */
 
-alert("ok doing something ")
+alert("ok doing something ");
 
 //<!-- AF: pseudocode for location + fitbit sleep measure -->
 if (PurpleRobot.probesState() != true)  //check if Location Probe is enabled, alert to enable in PR?
