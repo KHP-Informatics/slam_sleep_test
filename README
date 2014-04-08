@@ -24,12 +24,13 @@ Purple Robot App Settings:
 * other configurations will be set through the Slam Sleep App.
 
 #------------------------------------------------------------------------
-# Simple option to build .apk for 
+# Simple option to build .apk for Android, and Install on phone
 #------------------------------------------------------------------------
 Register an Adobe account. http://build.phonegap.com
 Point this to the https://github.com/KHP-Informatics/slam_sleep_test
 The webapp will build using the "master" branch for various platforms (of which only the android one will presently work).
 
+Install, I use a dropbox folder to transfer the .apk to the phone. Select the downloaded file and to install you will have to enable installation of apps from unknown sources, the option to do this will be presented during installation: Security >> unknown sources --> [CHECK]. 
 
 #------------------------------------------------------------------------
 # fitbit API KEYS
