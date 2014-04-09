@@ -79,7 +79,7 @@ $(".main-form").on("submit", function(ev){
             
             #test here
             conf_obj = { 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true };
-            PurpleRobotClient.updateProbe(conf_obj); // set the required option: "Sampling Rate" = 5 min, must have at least sample rate 5 mins
+            PurpleRobot.updateProbe(conf_obj); // set the required option: "Sampling Rate" = 5 min, must have at least sample rate 5 mins
         }
         catch (err)
         {
