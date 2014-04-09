@@ -73,7 +73,7 @@ $(".main-form").on("submit", function(ev){
 	ev.preventDefault();
         try
         {
-            PurpleRobotClient.lient.emitReading("bed_time",$("#bed_time").val());
+            PurpleRobotClient.emitReading("bed_time",$("#bed_time").val());
             PurpleRobotClient.emitReading("wake_time",$("#wake_time").val());
             PurpleRobotClient.emitReading("feeling_good_bad",$("#feeling_good_bad").val());
             
