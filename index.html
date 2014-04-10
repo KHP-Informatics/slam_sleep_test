@@ -9,6 +9,7 @@
 <script src="app/lib/lodash.min.js"></script>
 <script src="app/lib/purple-robot-client.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/date.js"></script>
 
 <style>
 .btn {width:100%;}
@@ -64,9 +65,43 @@ catch (err)
 
 // AF: to help with battery management, maybe have broad category of sample rates [e.g. low, med, high] (lowest=minimum sample rates where the data is useful), warn user if below this.
 
+
+
+
+
+
+var now = new Date();
+
+var json = {};
+//        conf_obj = { 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true };
+json.command = "execute_script";
+json.script = "PurpleRobot.updateProbe({ 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true }); PurpleRobot.playDefaultTone();";
+
+var post_data = {};
+post_data.json = JSON.stringify(json);
+
+$.ajax("/json/submit", {
+type: "POST",
+contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+data: post_data,
+success: function(data)
+{
+    alert("Location Probe enabled...");
+},
+error: function(jqXHR, textStatus, errorThrown) 
+{ 
+    alert("Error enabling Location Probe: " + errorThrown);
+}
+});
+
+
 $(".jumbotron").html("<h3>SLAM Sleep v1.01</h3>");
 
-});
+}); //end document.ready
+
+
+
+
 
 $(".main-form").on("submit", function(ev){
 
@@ -77,9 +112,9 @@ $(".main-form").on("submit", function(ev){
             PurpleRobotClient.emitReading("wake_time",$("#wake_time").val());
             PurpleRobotClient.emitReading("feeling_good_bad",$("#feeling_good_bad").val());
             
-            #test here
-            conf_obj = { 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true };
-            PurpleRobot.updateProbe(conf_obj); // set the required option: "Sampling Rate" = 5 min, must have at least sample rate 5 mins
+            //test here
+            //conf_obj = { 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true };
+            //PurpleRobot.updateProbe(conf_obj); // set the required option: "Sampling Rate" = 5 min, must have at least sample rate 5 mins
         }
         catch (err)
         {
@@ -90,8 +125,11 @@ $(".main-form").on("submit", function(ev){
 
 
 
-
+//end yer stuff
 </script>
+
+
+<!-- Page  --->
 
 </head>
 
