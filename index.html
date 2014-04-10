@@ -1,21 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SLAM Sleep v1.01</title>
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SLAM Sleep v1.01</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
-<script src="app/lib/jquery-2.1.0.min.js"></script>
-<script src="app/lib/lodash.min.js"></script>
-<script src="app/lib/purple-robot-client.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/date.js"></script>
+    <script src="app/lib/jquery-2.1.0.min.js"></script>
+    <script src="app/lib/lodash.min.js"></script>
+    <script src="app/lib/purple-robot-client.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
-<style>
-.btn {width:100%;}
-</style>
+    <style>
+        .btn {width:100%;}
+    </style>
 
-<script>
+    <script>
 
 $( document ).ready(function() {
 //put yer stuff here
@@ -71,7 +70,6 @@ catch (err)
 
 alert("just a test, ok doing something now");
 
-var now = new Date();
 
 var json = {};
 //        conf_obj = { 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true };
@@ -130,37 +128,37 @@ $(".main-form").on("submit", function(ev){
 </script>
 
 
-<!-- Page  --->
+    <!-- Page  --->
 
 </head>
 
 <body>
-	<div class="jumbotron"></div>
+<div class="jumbotron"></div>
 
-	<div class="container">
-                <!-- feedback simple sleep data, perhaps in first instance as a table? or graphic? -->
-                <div class="" >
-                    <img src="http://radiocarla.com/wp-content/uploads/2013/09/FitBit_Flex-Sleep2.jpg" alt="Sleep Dummy Image (Activity + GPS)" height=80% width=80% />
-                </div>
+<div class="container">
+    <!-- feedback simple sleep data, perhaps in first instance as a table? or graphic? -->
+    <div class="" >
+        <img src="http://radiocarla.com/wp-content/uploads/2013/09/FitBit_Flex-Sleep2.jpg" alt="Sleep Dummy Image (Activity + GPS)" height=80% width=80% />
+    </div>
 
-		<form role="form" id="main-form">  
-                        <div class="gps-group">
-                        
-                        <div class="form-group">
-				<label>What time did you go to bed last night?</label><br/>
-				<input type="time" name="bed_time" id="bed_time">
-			</div>
-			<div class="form-group">
-				<label>What time did wake up this morning?</label><br/>
-				<input type="time" name="wake_time" id="wake_time">
-			</div>
-			<div class="form-group">
-				<label>How did you feel?</label><br/>
-				<input type="range" name="feeling_good_bad" min="0" max="10" id="feeling_good_bad">
-			</div>
-			<button type="submit" class="btn btn-primary">Save</button>
-		</form>
-	</div>
+    <form role="form" id="main-form">
+        <div class="gps-group">
+
+            <div class="form-group">
+                <label>What time did you go to bed last night?</label><br/>
+                <input type="time" name="bed_time" id="bed_time">
+            </div>
+            <div class="form-group">
+                <label>What time did wake up this morning?</label><br/>
+                <input type="time" name="wake_time" id="wake_time">
+            </div>
+            <div class="form-group">
+                <label>How did you feel?</label><br/>
+                <input type="range" name="feeling_good_bad" min="0" max="10" id="feeling_good_bad">
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
 
 </body>
 </html>
