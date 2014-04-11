@@ -48,7 +48,6 @@ catch (err)
     //do something or throw
     alert("3. PurpleRobotClient.enableProbe error" + err);
 }
-*/
 
 try
 {
@@ -60,7 +59,7 @@ catch (err)
     //do something or throw
     alert("4. PurpleRobotClient.updateProbe error" + err);
 }
-
+*/
 // AF: maybe setup some optional conf which specifies the set of probes and configures them at recommended values -- otherwise somewhat labourious for the user to do.
 
 // AF: to help with battery management, maybe have broad category of sample rates [e.g. low, med, high] (lowest=minimum sample rates where the data is useful), warn user if below this.
@@ -112,6 +111,9 @@ $(".main-form").on("submit", function(ev){
             PurpleRobotClient.emitReading("wake_time",$("#wake_time").val());
             PurpleRobotClient.emitReading("feeling_good_bad",$("#feeling_good_bad").val());
             
+            //test here
+            //conf_obj = { 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true };
+            //PurpleRobot.updateProbe(conf_obj); // set the required option: "Sampling Rate" = 5 min, must have at least sample rate 5 mins
         }
         catch (err)
         {
