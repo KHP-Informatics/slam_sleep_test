@@ -203,3 +203,10 @@ PurpleRobotClient.emitToast = function (contents,emission_format) {
     js_to_execute = 'PurpleRobot.setUserId(\"' + contents + '\");'
     return PurpleRobotClient.actionHandler(js_to_execute, emission_format);
 }
+
+// Added for testing slam sleep in-app config 
+
+PurpleRobotClient.emitToast = function (contents,emission_format) {
+    js_to_execute = 'PurpleRobot.updateProbe(\"' + contents + '\");'
+    return PurpleRobotClient.actionHandler(js_to_execute, emission_format);
+}
