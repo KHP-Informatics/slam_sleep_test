@@ -67,7 +67,7 @@ catch (err)
 
 
 
-
+/*
 var json = {};
 json.command = "execute_script";
 //conf_obj = { 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true };
@@ -91,7 +91,14 @@ error: function(jqXHR, textStatus, errorThrown)
 }
 });
 
+*/
 
+
+var options = {};
+options["name"] = "edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe";
+options["frequency"] = 300000;
+options["enabled"] = true;
+PurpleRobot.updateProbe(options);
 
 
 
