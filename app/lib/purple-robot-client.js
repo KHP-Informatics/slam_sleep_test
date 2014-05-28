@@ -1,10 +1,8 @@
 var PurpleRobotClient = {};
 
-
-
 // PurpleRobotClient.serverUrl = "http://165.124.199.39:12345/json/submit";
-// PurpleRobotClient.serverUrl = "http://165.124.198.95:12345/json/submit";
 PurpleRobotClient.serverUrl = "http://localhost:12345/json/submit";
+PurpleRobotClient.serverUrl = "http://10.104.112.177:12345/json/submit";
 
 
 PurpleRobotClient.launchRequest = "PurpleRobot.fetchString(\'app_config\')";

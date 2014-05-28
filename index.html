@@ -50,7 +50,7 @@ catch (err)
 }
 */
 
-alert("just a test, ok doing something now");
+// alert("just a test, ok doing something now");
 
 /*
 try
@@ -98,7 +98,7 @@ var options = {};
 options["name"] = "edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe";
 options["frequency"] = 300000;
 options["enabled"] = true;
-PurpleRobot.updateProbe(options);
+PurpleRobotClient.updateProbe(JSON.stringify(options));
 
 
 
@@ -138,26 +138,24 @@ error: function(jqXHR, textStatus, errorThrown)
 
 $(".jumbotron").html("<h3>SLAM Sleep v1.01</h3>");
 
+
+$("#main-form").on("submit", function(ev){
+    ev.preventDefault();
+    var data_to_save = {};
+    data_to_save.bed_time = $("#bed_time").val();
+    data_to_save.wake_time = $("#wake_time").val();
+    data_to_save.feeling_goodbad = $("#feeling_good_bad").val();
+    data_to_save.created_at = new Date();
+    PurpleRobotClient.emitReading("survey_data",data_to_save);
+});
+
+
 }); //end document.ready
 
 
 
 
 
-$(".main-form").on("submit", function(ev){
-
-	ev.preventDefault();
-        try
-        {
-            PurpleRobotClient.emitReading("bed_time",$("#bed_time").val());
-            PurpleRobotClient.emitReading("wake_time",$("#wake_time").val());
-            PurpleRobotClient.emitReading("feeling_good_bad",$("#feeling_good_bad").val());
-        }
-        catch (err)
-        {
-            alert("5. error thrown in form js" + err);
-        }
-});
 
 
 
@@ -175,7 +173,7 @@ $(".main-form").on("submit", function(ev){
 <div class="container">
     <!-- feedback simple sleep data, perhaps in first instance as a table? or graphic? -->
     <div class="" >
-        <img src="http://radiocarla.com/wp-content/uploads/2013/09/FitBit_Flex-Sleep2.jpg" alt="Sleep Dummy Image (Activity + GPS)" height=80% width=80% />
+        <!-- <img src="http://radiocarla.com/wp-content/uploads/2013/09/FitBit_Flex-Sleep2.jpg" alt="Sleep Dummy Image (Activity + GPS)" height=80% width=80% /> -->
     </div>
 
     <form role="form" id="main-form">
