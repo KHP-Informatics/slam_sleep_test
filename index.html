@@ -9,6 +9,9 @@
     <script src="app/lib/lodash.min.js"></script>
     <script src="app/lib/purple-robot-client.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="phonegap.js"></script>
+
+
 
     <style>
         .btn {width:100%;}
@@ -17,81 +20,26 @@
     <script>
 
 $( document ).ready(function() {
-//put yer stuff here
-
-/* AF: <!-- Make sure GPS information is captured every x mins, in order to integrate with accelerometer data from 1) fitbit 2) on-phone accelerometer or other activity measuring device, in order to produce a better measure of sleep and more importantly the user does not need to indicate when they are going to sleep / when the wake. The logic is the GPS coordinates will be static when asleep and accelerometer will measure restlessness. There are only a few other false positive scenarios where i) both devices have been put down, ii) charging accelerometer, iii)  --> */
-/*
-alert("just a test, ok doing something now");
-
-//<!-- AF: pseudocode for location + fitbit sleep measure -->
-try
-{
-    probesOn = PurpleRobotClient.probesState();
-}
-catch (err)
-{
-    alert("1. PurpleRobotClient.probesState error" + err);
-}
-
-if (probesOn == true)  //check if Probes are enabled, alert to enable in PR?
-{
-    //alert client that they are not 
-    alert("2. Check Probes are enabled in Purple Robot App. \n check: Purple Robot > Probe Configuration > Enable Probes");
-}
-
-try
-{
-    PurpleRobotClient.enableProbe('edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe'); //enabble Location Probe if not enabled, or direct user to enable
-}
-catch (err)
-{
-    //do something or throw
-    alert("3. PurpleRobotClient.enableProbe error" + err);
-}
-*/
-
-// alert("just a test, ok doing something now");
-
-/*
-try
-{
-    conf_obj = { 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true };
-    PurpleRobotClient.updateProbe(conf_obj); // set the required option: "Sampling Rate" = 5 min, must have at least sample rate 5 mins
-}
-catch (err)
-{
-    //do something or throw
-    alert("4. PurpleRobotClient.updateProbe error" + err);
-}
-*/
-
-
-
-/*
-var json = {};
-json.command = "execute_script";
-//conf_obj = { 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true };
-//PurpleRobotClient.updateProbe(conf_obj); // set the required option: "Sampling Rate" = 5 min, must have at least sample rate 5 mins
-json.script = "PurpleRobot.updateProbe({ 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true });";
-
-var post_data = {};
-post_data.json = JSON.stringify(json);
-
-$.ajax("/json/submit", {
-type: "POST",
-contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
-data: post_data,
-success: function(data)
-{
-    alert("Success updateProbe config...");
-},
-error: function(jqXHR, textStatus, errorThrown) 
-{ 
-    alert("Error updateProbe config: " + errorThrown);
-}
+    onLoad();
 });
 
-*/
+function onLoad() {
+    document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+
+function onDeviceReady() {
+    document.addEventListener("resume", onResume, false);
+    startApp();
+}
+
+// Handle the resume event
+//
+function onResume() {
+    startApp();
+}
+
+function startApp () {
 
 
 var options = {};
@@ -100,41 +48,6 @@ options["frequency"] = 300000;
 options["enabled"] = true;
 PurpleRobotClient.updateProbe(JSON.stringify(options));
 
-
-
-
-// AF: maybe setup some optional conf which specifies the set of probes and configures them at recommended values -- otherwise somewhat labourious for the user to do.
-
-// AF: to help with battery management, maybe have broad category of sample rates [e.g. low, med, high] (lowest=minimum sample rates where the data is useful), warn user if below this.
-
-
-
-
-
-
-/*
-var json = {};
-//        conf_obj = { 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true };
-json.command = "execute_script";
-json.script = "PurpleRobot.updateProbe({ 'name':'edu.northwestern.cbits.purple_robot_manager.probes.builtin.LocationProbe', 'frequency':'300000', 'enabled':true }); PurpleRobot.playDefaultTone();";
-
-var post_data = {};
-post_data.json = JSON.stringify(json);
-
-$.ajax("/json/submit", {
-type: "POST",
-contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
-data: post_data,
-success: function(data)
-{
-    alert("Location Probe enabled...");
-},
-error: function(jqXHR, textStatus, errorThrown) 
-{ 
-    alert("Error enabling Location Probe: " + errorThrown);
-}
-});
-*/
 
 $(".jumbotron").html("<h3>SLAM Sleep v1.01</h3>");
 
@@ -150,8 +63,7 @@ $("#main-form").on("submit", function(ev){
 });
 
 
-}); //end document.ready
-
+};
 
 
 
